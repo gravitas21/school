@@ -1,0 +1,10 @@
+Dice 1 : 6Dice 2: 6Product : 36Sum : 12
+Dice 1 : 3Dice 2: 4Product : 12Sum : 7
+Dice 1 : 5Dice 2: 4Product : 20Sum : 9
+Dice 1 : 3Dice 2: 6Product : 18Sum : 9
+Dice 1 : 2Dice 2: 1Product : 2Sum : 3
+Dice 1 : 4Dice 2: 1Product : 4Sum : 5
+Dice 1 : 1Dice 2: 4Product : 4Sum : 5
+Dice 1 : 4Dice 2: 3Product : 12Sum : 7
+Dice 1 : 3Dice 2: 6Product : 18Sum : 9
+Dice 1 : 5Dice 2: 2Product : 10Sum : 7

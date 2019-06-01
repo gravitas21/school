@@ -25,7 +25,7 @@
 - 4.4 Signal Processing
 - 4.5 Simulation
 
-### 5. Data Science
+### 5. Introduction to Data Science
 - 5.1 Data Cleaning
 - 5.2 Data Preprocessing
 - 5.3 Model Selection

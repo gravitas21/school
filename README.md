@@ -1,11 +1,10 @@
 # ANPA Python Summerschool, 2019
 
-Following are the Courses Covered:
 
 ## 1. Introduction to Python
-### 1.1 Fundamentals of Datastructure
-### 1.2 Loops and Conditions
-### 1.3 Function and Class
+  ### 1.1 Fundamentals of Datastructure
+  ### 1.2 Loops and Conditions
+  ### 1.3 Function and Class
 
 ## 2. Introduction to Numpy	
   ### 2.1 Array

@@ -1,4 +1,4 @@
-# ANPA Python Summerschool, 2019
+# ANPA Python Summer School, 2019
 
 
 ### 1. Introduction to Python

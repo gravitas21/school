@@ -1,12 +1,14 @@
-__author__ = 'philippe'
 from Tkinter import *
 master = Tk()
-
+# Ref:  https://artint.info/html/ArtInt_265.html
 triangle_size = 0.1
 cell_score_min = -0.2
 cell_score_max = 0.2
+
 Width = 100
 (x, y) = (5, 5)
+
+
 actions = ["up", "down", "left", "right"]
 
 board = Canvas(master, width=x*Width, height=y*Width)
@@ -63,7 +65,8 @@ render_grid()
 def set_cell_score(state, action, val):
     global cell_score_min, cell_score_max
     triangle = cell_scores[state][action]
-    green_dec = int(min(255, max(0, (val - cell_score_min) * 255.0 / (cell_score_max - cell_score_min))))
+    green_dec = int(min(255, max(0, (val - cell_score_min) *\
+                                 255.0 / (cell_score_max - cell_score_min))))
     green = hex(green_dec)[2:]
     red = hex(255-green_dec)[2:]
     if len(red) == 1:
@@ -81,20 +84,24 @@ def try_move(dx, dy):
     new_x = player[0] + dx
     new_y = player[1] + dy
     score += walk_reward
-    if (new_x >= 0) and (new_x < x) and (new_y >= 0) and (new_y < y) and not ((new_x, new_y) in walls):
-        board.coords(me, new_x*Width+Width*2/10, new_y*Width+Width*2/10, new_x*Width+Width*8/10, new_y*Width+Width*8/10)
+    if (new_x >= 0) and (new_x < x) and\
+    (new_y >= 0) and (new_y < y) and \
+        not ((new_x, new_y) in walls):
+        board.coords(me, new_x*Width+Width*2/10,\
+                     new_y*Width+Width*2/10,\
+                     new_x*Width+Width*8/10, new_y*Width+Width*8/10)
         player = (new_x, new_y)
     for (i, j, c, w) in specials:
         if new_x == i and new_y == j:
             score -= walk_reward
             score += w
             if score > 0:
-                print "Success! score: ", score
+                print("Success! score: ", score)
             else:
-                print "Fail! score: ", score
+                print("Fail! score: ", score)
             restart = True
             return
-    #print "score: ", score
+    #print("score: ", score)
 
 
 def call_up(event):
@@ -118,7 +125,9 @@ def restart_game():
     player = (0, y-1)
     score = 1
     restart = False
-    board.coords(me, player[0]*Width+Width*2/10, player[1]*Width+Width*2/10, player[0]*Width+Width*8/10, player[1]*Width+Width*8/10)
+    board.coords(me, player[0]*Width+Width*2/10,\
+                 player[1]*Width+Width*2/10, player[0]*Width+Width*8/10,\
+                 player[1]*Width+Width*8/10)
 
 def has_restarted():
     return restart

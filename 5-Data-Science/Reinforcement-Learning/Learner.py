@@ -1,15 +1,18 @@
-__author__ = 'philippe'
 import World
 import threading
 import time
-
+import json
+# Ref: https://artint.info/html/ArtInt_265.html
 discount = 0.3
 actions = World.actions
 states = []
 Q = {}
+Qstore = []
+
 for i in range(World.x):
     for j in range(World.y):
         states.append((i, j))
+        
 
 for state in states:
     temp = {}
@@ -17,6 +20,8 @@ for state in states:
         temp[action] = 0.1
         World.set_cell_score(state, action, temp[action])
     Q[state] = temp
+    
+    
 
 for (i, j, c, w) in World.specials:
     for action in actions:
@@ -24,6 +29,7 @@ for (i, j, c, w) in World.specials:
         World.set_cell_score((i, j), action, w)
 
 
+        
 def do_action(action):
     s = World.player
     r = -World.score
@@ -63,6 +69,9 @@ def run():
     time.sleep(1)
     alpha = 1
     t = 1
+    f1 = open("data/Qstore.txt", "w")
+    f2 = open("data/Qmatrix.txt", "w")
+    k =0
     while True:
         # Pick the right action
         s = World.player
@@ -72,6 +81,16 @@ def run():
         # Update Q
         max_act, max_val = max_Q(s2)
         inc_Q(s, a, alpha, r + discount * max_val)
+        
+        f1.write(str((s, a, r, s2)))
+        f1.write("\n")
+        f1.write(str(Q[s]))
+        f1.write("\n")
+        
+        if k%10 == 0:
+            f2.write(str(Q))
+            f2.write("\n")
+        
 
         # Check if the game has restarted
         t += 1.0
@@ -85,8 +104,8 @@ def run():
 
         # MODIFY THIS SLEEP IF THE GAME IS GOING TOO FAST.
         time.sleep(0.1)
-
-
+        k = k +1
+       
 t = threading.Thread(target=run)
 t.daemon = True
 t.start()
